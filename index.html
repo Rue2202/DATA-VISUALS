@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Index - Data Visualization Labs</title>
+    <link rel="stylesheet" href="girly-pop.css"> <!-- Link to the CSS file -->
+    <style>
+        /* Center-align content */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px; /* Add some margin to separate from footer */
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Hover effect */
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #d147a3;
+            font-size: 20px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .card a:hover {
+            color: #ff69b4;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffd1e8;
+            color: #555;
+            width: 100%; /* Make footer full-width */
+            margin-top: auto; /* Push footer to the bottom */
+            border-top: 3px solid #d147a3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Visualization Labs</h1>
+        <p>Welcome Peasants. Click on whichever labs:</p>
+
+        <!-- Card for Lab 1 -->
+        <div class="card">
+            <a href="lab1.html">Lab 1</a>
+        </div>
+
+        <!-- Card for Lab 2 -->
+        <div class="card">
+            <a href="lab2.html">Lab 2</a>
+        </div>
+
+        <!-- Add more cards for other labs as needed -->
+    </div>
+
+    <footer>
+        © 2024 Jerusha Dass | COS30045 Data Visualisation
+    </footer>
+</body>
+</html>
