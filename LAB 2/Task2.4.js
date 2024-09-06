@@ -34,9 +34,9 @@ function barChart(wombatSightings)
             })
             .attr("y",function(d)
         {
-            return h-(d.wombats * 4)
+            return h-(d.wombats * 4)-14
         })
-        //Width & Heiht of the Bar Chart
+        //Width & Height of the Bar Chart
            .attr("width",function(d)
            {
               return (w/wombatSightings.length-barPadding);
@@ -48,8 +48,8 @@ function barChart(wombatSightings)
 //Color of Bar Chart changed according to the data value
         .attr("fill", function(d)
     {
-        return "rgb(255,182, " + (d.wombats * 8) + ")";
-    });
+        return "rgb(0, " + (100 + d.wombats * 10) + ", 0)";
+    })
 
     svg.selectAll("text")
             .data(wombatSightings)
