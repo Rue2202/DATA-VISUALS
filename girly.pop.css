@@ -115,20 +115,20 @@ footer
     display: inline-block;
     padding: 10px 20px;
     margin-top: 20px;
-    background-color: #ffb6c1; /* Light pink background */
-    color: white;               /* White text color */
-    text-decoration: none;      /* Remove underline */
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font */
-    font-size: 16px;            /* Adjust the font size */
-    border-radius: 25px;        /* Rounded edges */
-    border: 2px solid #ff69b4;  /* Hot pink border */
-    transition: all 0.3s ease;  /* Smooth transition on hover */
+    background-color: #ffb6c1; 
+    color: white;               
+    text-decoration: none;     
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
+    font-size: 16px;            
+    border-radius: 25px;        
+    border: 2px solid #ff69b4;  
+    transition: all 0.3s ease;  
 }
 
 .back-link:hover {
-    background-color: #ff69b4;  /* Hot pink background on hover */
-    color: white;               /* Text color stays white */
-    transform: scale(1.05);     /* Slightly enlarge the button on hover */
+    background-color: #ff69b4;  
+    color: white;               
+    transform: scale(1.05);     
 }
 
 body
@@ -145,8 +145,8 @@ footer {
     padding: 20px;
     background-color: #ffd1e8;
     color: #555;
-    width: 100%; /* Make footer full-width */
-    margin-top: auto; /* Push footer to the bottom */
+    width: 100%; 
+    margin-top: auto; 
     border-top: 3px solid #d147a3;
 }
 
