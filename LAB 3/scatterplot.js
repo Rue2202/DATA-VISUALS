@@ -11,16 +11,16 @@ function init() {
                 .attr("height", h);
 
     var dataset = [
-        [5, 20],
-        [500, 90],
-        [250, 50],
-        [100, 33],
-        [330, 95],
-        [410, 12],
-        [475, 44],
-        [25, 67],
-        [85, 21],
-        [220, 88]
+        [2, 8],
+        [3, 5],
+        [5, 17],
+        [6, 6],
+        [6, 12],
+        [7, 20],
+        [8, 22],
+        [10, 11],
+        [5, 12],
+        [6, 16]
     ];
 
     // xScale maps the x values to fit within the width
@@ -78,6 +78,14 @@ function init() {
         .attr("transform", "translate(0," + (h - padding) + ")") // Move to bottom
         .call(xAxis);
 
+         // Add X-axis label
+         svg.append("text")
+         .attr("text-anchor", "end")
+         .attr("x", w / 2)
+         .attr("y", h - 5.3)  // Position below the axis
+         .text("Tree Age (year)")
+         .attr("font-size", "14px");
+
     // Create Y-axis
     var yAxis = d3.axisLeft(yScale).ticks(5);
 
@@ -86,6 +94,15 @@ function init() {
         .attr("class", "y axis")
         .attr("transform", "translate(" + padding + ",0)") // Move to left
         .call(yAxis);
+
+        // Add Y-axis label
+        svg.append("text")
+        .attr("text-anchor", "end")
+        .attr("x", -h / 2.5)  // Rotate for vertical label
+        .attr("y", 12)
+        .attr("transform", "rotate(-90)")
+        .text("Tree Height (m)")
+        .attr("font-size", "14px");
 }
 
 window.onload = init;
