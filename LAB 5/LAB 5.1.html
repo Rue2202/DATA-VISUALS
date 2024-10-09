@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="description" content="Data Visualisation"/>
+        <meta name="keywords" content="HTML, CSS, D3"/>
+        <meta name="author" content="Jerusha Dass"/>
+        <link rel="stylesheet" href="../girly.pop.css">
+        <title>Task 5.1 D3 Updates</title>
+
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
+
+    <body>
+        <h1> 5.1 D3 - Updates</h1>
+
+        <script>
+
+            var w =500;
+            var h =200;
+            var barPadding=3;
+
+            var dataset = [24, 10, 29, 19, 8, 15, 20, 12, 9, 6, 21, 28];
+
+            var xScale= d3.scaleBand()
+                          .domain(d3.range(dataset.length))
+                          .range([0,w])
+                          .paddingInner(0.05);
+
+            var svg = d3.select("body")
+                        .append("svg")
+                        .attr("width",w)
+                        .attr("height",h)
+
+                        d3.select("button")
+                        .on("Click", function()
+                        {
+                            alert("Hey, the button works!")
+                        });
+                        
+            svg.selectAll("rect")
+            .data(dataset)
+            //.enter()
+            //.append("rect")
+            .attr("x",function(d, i)
+            {
+              return i * (w / dataset.length);
+            })
+            .attr("y",function(d)
+            {
+              return h - yScale(d);
+            })
+
+            .attr("width", xScale.bandwidth())
+           
+            .attr("height",function(d)
+            {
+                return yScale(d);
+            })
+            .attr("fill","pink");
+
+            svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function(d)
+            {
+                return d;
+            })
+            .attr("fill","black")
+            .attr("x",function(d, i)
+            {
+                return i * (w/dataset.length) + (w/dataset.length - barPadding)/2;// To Center the value in the middle of the bar chart
+            })
+            .attr("y",function(d)
+        {
+            return h - (d*4)-5;// Position value above bars
+        })
+        .attr("text-anchor","middle");// Align the text in the middle
+
+        </script>
+
+        <br>
+        <a class="back-link" href="../lab2.html">Back to Lab 2 Main Page</a>
+        <br>
+
+<footer style="color:grey">COS30045 Data Visualisation<br> Jerusha Dass</footer>
+</body>
+</html>
