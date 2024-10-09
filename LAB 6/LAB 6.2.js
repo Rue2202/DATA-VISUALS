@@ -92,7 +92,7 @@ function handleMouseOver(event, d) {
     svg.append("text")  // Append a 'text' element for the tooltip
         .attr("class", "tooltip")  // Add a class for styling
         .attr("x", parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2)  // Center the tooltip on the bar
-        .attr("y", yScale(d) - 10)  // Position tooltip slightly above the bar
+        .attr("y", yScale(d) - 5.5)  // Position tooltip slightly above the bar
         .attr("text-anchor", "middle")  // Center the text
         .attr("fill", "black")  // Set tooltip text color
         .attr("font-size", "14px")  // Set the font size
