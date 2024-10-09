@@ -1,65 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="description" content="Data Visualisation"/>
-        <meta name="keywords" content="HTML, CSS, D3"/>
-        <meta name="author" content="JD"/>
-        <link rel="stylesheet" href="../girly.pop.css">
-        <title>Lab 5.2 D3 Transitions</title>
 
-        <!-- Load the D3.js library -->
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-
-        <!-- CSS to center the buttons and chart-->
-        <style>
-            /* Center the content */
-            .container {
-                text-align: center; /* Center all content inside this container */
-                margin-top: 20px; /* Add some space from the top */
-            }
-
-            /* Style for the buttons */
-            button {
-                background-color: #f78bc6; /* Pink background */
-                border: none; /* Remove borders */
-                color: white; /* White text */
-                padding: 10px 20px; /* Padding inside the button */
-                text-align: center; /* Center the text */
-                font-size: 16px; /* Larger font size */
-                cursor: pointer; /* Pointer on hover */
-                margin-bottom: 20px; /* Add space below the button */
-                margin-right: 10px; /* Add space between buttons */
-            }
-
-            button:hover {
-                background-color: #c704aa; /* Darker pink when hovered */
-            }
-
-            /* Style for the bar chart */
-            svg {
-                display: inline-block; /* Keep it inline for centering */
-                margin: auto;          /* Center the SVG */
-            }
-        </style>
-    </head>
-
-    <body>
-        <h1> 5.2 D3 - Transitions</h1>
-
-        <!-- Container to hold the buttons and chart -->
-        <div class="container">
-            <!-- Buttons to update the data and try different transitions -->
-            <button id="updateButton">Update</button>
-            <button id="easeInOutButton">Ease In/Out</button>
-            <button id="elasticOutButton">Elastic Out</button>
-            <button id="staggeredButton">Staggered Transition</button>
-
-            <!-- The chart will be inserted here -->
-            <div id="chart"></div>
-        </div>
-
-        <script>
             // Set up the width, height, and padding for the chart area
             var w = 500; // Width of the chart
             var h = 200; // Height of the chart
@@ -165,13 +104,4 @@
             d3.select("#staggeredButton").on("click", function() {
                 updateData(d3.easeCircleOut, true); // Apply staggered transition with easing
             });
-        </script>
-
-        <script src="LAB 5.2.js"></script>
-        <br>
-        <a class="back-link" href="../lab5.html">Back to Lab 5 Main Page</a>
-        <br>
-
-        <footer style="color:grey">Data Visual<br> J</footer>
-    </body>
-</html>
+        
