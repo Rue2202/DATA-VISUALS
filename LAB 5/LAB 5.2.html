@@ -6,21 +6,21 @@
         <meta name="keywords" content="HTML, CSS, D3"/>
         <meta name="author" content="JD"/>
         <link rel="stylesheet" href="../girly.pop.css">
-        <title>Lab 5.1 D3 Updates</title>
+        <title>Lab 5.2 D3 Transitions</title>
 
-        <!--Load from the D3.js library -->
+        <!-- Load the D3.js library -->
         <script src="https://d3js.org/d3.v7.min.js"></script>
 
-        <!-- CSS to center the button and chart-->
+        <!-- CSS to center the buttons and chart-->
         <style>
-       /* Center the content */
-       .container {
+            /* Center the content */
+            .container {
                 text-align: center; /* Center all content inside this container */
                 margin-top: 20px; /* Add some space from the top */
             }
 
-        /* To Style the button */
-        button {
+            /* Style for the buttons */
+            button {
                 background-color: #f78bc6; /* Pink background */
                 border: none; /* Remove borders */
                 color: white; /* White text */
@@ -29,35 +29,38 @@
                 font-size: 16px; /* Larger font size */
                 cursor: pointer; /* Pointer on hover */
                 margin-bottom: 20px; /* Add space below the button */
+                margin-right: 10px; /* Add space between buttons */
             }
 
             button:hover {
                 background-color: #c704aa; /* Darker pink when hovered */
             }
 
-         /* Add some basic styling for the Bar chart */
-         svg {
+            /* Style for the bar chart */
+            svg {
                 display: inline-block; /* Keep it inline for centering */
                 margin: auto;          /* Center the SVG */
             }
-
         </style>
     </head>
 
     <body>
-        <h1> 5.1 D3 - Updates</h1>
+        <h1> 5.2 D3 - Transitions</h1>
 
-        <!-- A container to hold the button and chart -->
+        <!-- Container to hold the buttons and chart -->
         <div class="container">
-            <!-- Button to update the data -->
+            <!-- Buttons to update the data and try different transitions -->
             <button id="updateButton">Update</button>
+            <button id="easeInOutButton">Ease In/Out</button>
+            <button id="elasticOutButton">Elastic Out</button>
+            <button id="staggeredButton">Staggered Transition</button>
 
-            <!-- The chart will be inserted  -->
+            <!-- The chart will be inserted here -->
             <div id="chart"></div>
         </div>
 
         <script>
-          // To set the width, height, and padding for the chart area
+            // Set up the width, height, and padding for the chart area
             var w = 500; // Width of the chart
             var h = 200; // Height of the chart
             var barPadding = 20; // Padding around the chart
@@ -76,7 +79,7 @@
                            .domain([0, d3.max(dataset)]) // Sets domain range from 0 to max value in dataset
                            .range([h, 0]); // Invert the y-axis so higher values are on top
 
-             // SVG Element for chart area to add to chart div
+            // SVG Element for chart area to add to chart div
             var svg = d3.select("#chart") // Select the bar chart div
                         .append("svg") // Add an SVG element
                         .attr("width", w + barPadding * 2) // Sets the total width + padding
@@ -106,8 +109,8 @@
             .attr("text-anchor", "middle") // Center the text horizontally
             .attr("fill", "black"); // Set text color
 
-            // Function updateData to generate new random data and update the bar chart
-            function updateData() {
+            // Function to generate new random data and update the bar chart
+            function updateData(easingType = d3.easeLinear, staggered = false) {
               // Generate new random dataset
               dataset = [];
               var maxValue = 25; // Maximum value for random data
@@ -120,27 +123,48 @@
               // Update the yScale domain with the new max value
               yScale.domain([0, d3.max(dataset)]); // Updates the scale based on random new dataset
 
-              // Update the bars with new data
-              svg.selectAll("rect") // Select all existing bars
+              // Apply the transition
+              var transition = svg.selectAll("rect") // Select all existing bars
                    .data(dataset) // Bind the new data
                    .transition() // Animate the changes
-                   .duration(500) // Set the duration for the animation
+                   .duration(2000) // Set the duration for the transition
+                   .ease(easingType) // Apply easing type
                    .attr("y", function(d) { return yScale(d); }) // Update the y position
                    .attr("height", function(d) { return h - yScale(d); }); // Update the height of the bars
-              
+
+              // Apply staggered transition if enabled
+              if (staggered) {
+                transition.delay(function(d, i) {
+                    return i * 100; // Delay each bar by 100ms
+                });
+              }
+
               // Update the text labels with new data
               svg.selectAll("text") // Select all existing text labels
                 .data(dataset) // Bind the new data
-                .transition() // Animate changes in the bar chart
-                .duration(500) // Set the duration for the animation
-                .text(function(d) { return d; }) // Update the text content
-                .attr("x", function(d, i) { return xScale(i) + xScale.bandwidth() / 2; }) // Adjust the x position
-                .attr("y", function(d) { return yScale(d) - 5; }); // Adjust the y position
+                .transition() // Animate the changes
+                .duration(2000) // Set the duration for the transition
+                .ease(easingType) // Apply easing type to the text transition
+                .attr("y", function(d) { return yScale(d) - 5; }) // Update the y position for the text
+                .text(function(d) { return d; }); // Update the text content
             }
-            
-          // Add event listener to the button to update the data when clicked
-          d3.select("#updateButton") // Select the button by its ID
-              .on("click", updateData); // Call updateData when the button is clicked
+
+            // Event listeners for the buttons
+            d3.select("#updateButton").on("click", function() {
+                updateData(d3.easeLinear); // Simple linear transition
+            });
+
+            d3.select("#easeInOutButton").on("click", function() {
+                updateData(d3.easeCubicInOut); // Use ease cubic in/out transition
+            });
+
+            d3.select("#elasticOutButton").on("click", function() {
+                updateData(d3.easeElasticOut); // Use elastic out easing transition
+            });
+
+            d3.select("#staggeredButton").on("click", function() {
+                updateData(d3.easeCircleOut, true); // Apply staggered transition with easing
+            });
         </script>
 
         <br>

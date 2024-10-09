@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Data Visualisation">
+    <meta name="keywords" content="HTML, CSS, D3">
+    <meta name="author" content="JD">
+    <link rel="stylesheet" href="../girly.pop.css">
+    <title>Task 6.2 D3 Interactivity - Sort</title>
+
+    <!-- Load the D3.js library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- CSS to style the buttons and chart-->
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #f78bc6;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #c704aa;
+        }
+
+        svg {
+            display: inline-block;
+            margin: auto;
+        }
+
+        /* Style for the tooltip */
+        .tooltip, .bar-label {
+            font-family: Arial, sans-serif;
+            font-size: 15px; /*  the font size is the same for both labels and tooltips */
+            fill: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>6.2 D3 Interactivity- Sort</h1>
+
+    <div class="container">
+        <button id="addButton">Add Data</button>
+        <button id="removeButton">Remove Data</button>
+        <button id="sortButton">Sort Data</button>
+        <div id="chart"></div>
+    </div>
+       
+    <script src="LAB 6.2.js"></script>
+    <br>
+    <a class="back-link" href="../lab6.html">Back to Lab 5 Main Page</a>
+    <br>
+
+    <footer style="color:grey">Data Visual<br> J</footer>
+</body>
+</html>
